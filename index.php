@@ -20,11 +20,11 @@
 
     <nav id="menu">
       <ul>
-        <li><a href=""></a>Inicio</li>
-        <li><a href=""></a>Categoria 1</li>
-        <li><a href=""></a>Categoria 2</li>
-        <li><a href=""></a>Categoria 3</li>
-        <li><a href=""></a>Categoria 4</li>
+        <li><a href="">Inicio</a></li>
+        <li><a href="">Categoria 1</a></li>
+        <li><a href="">Categoria 2</a></li>
+        <li><a href="">Categoria 3</a></li>
+        <li><a href="">Categoria 4</a></li>
       </ul>
     </nav>
 
