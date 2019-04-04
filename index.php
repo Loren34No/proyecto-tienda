@@ -11,14 +11,14 @@
 
 <body>
   <div id="container">
-    <header id="header">
+    <header>
       <div id="logo">
         <img src="assets/img/camiseta.png" alt="Logo de camiseta">
         <a href="index.php">Tienda de camiseta</a>
       </div>
     </header>
 
-    <nav id="menu">
+    <nav>
       <ul>
         <li><a href="">Inicio</a></li>
         <li><a href="">Categoria 1</a></li>
@@ -28,45 +28,49 @@
       </ul>
     </nav>
 
-    <main id="main">
+    <main>
       <aside id="lateral">
         <div id="login" class="block_aside">
+          <h3>Entrar a la web</h3>
           <form action="" method="POST">
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email">
-            <label for="password">Contraseña</label>
+            <label for="email">Email:</label>
+            <input type="email" name="email" id="email">
+            <label for="password">Contraseña:</label>
             <input type="password" name="password" id="password">
             <button type="submit">Ingresar</button>
           </form>
-          <a href="">Mis pedidos</a>
-          <a href="">Gestionar pedidos</a>
-          <a href="">Gestionar categorias</a>
+          <ul>
+            <li><a href="">Mis pedidos</a></li>
+            <li><a href="">Gestionar pedidos</a></li>
+            <li><a href="">Gestionar categorias</a></li>
+          </ul>
         </div>
       </aside>
 
       <div id="principal">
+        <h1>Productos destacados</h1>
         <div id="products">
           <img src="assets/img/camiseta.png">
           <h2>Camiseta azul ancha</h2>
           <p>$10.000</p>
-          <a href="">Comprar</a>
+          <a href="" class="btn">Comprar</a>
         </div>
         <div id="products">
           <img src="assets/img/camiseta.png">
           <h2>Camiseta azul ancha</h2>
           <p>$10.000</p>
-          <a href="">Comprar</a>
+          <a href="" class="btn">Comprar</a>
         </div>
         <div id="products">
           <img src="assets/img/camiseta.png">
           <h2>Camiseta azul ancha</h2>
           <p>$10.000</p>
-          <a href="">Comprar</a>
+          <a href="" class="btn">Comprar</a>
         </div>
       </div>
     </main>
 
-    <footer id="footer">
+    <footer>
       <p>&copy; Desarrollador por sebastiansanchez.cl | <?= date('Y'); ?></p>
     </footer>
   </div>
