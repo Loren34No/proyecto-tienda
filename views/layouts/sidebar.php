@@ -10,13 +10,16 @@
         <input type="password" name="password" id="password">
         <button type="submit">Ingresar</button>
       </form>
+      <ul>
+        <li><a href="<?= URL_BASE; ?>Usuario/registro">Registrarse</a></li>
+      </ul>
     <?php else: ?>
       <h3><?= $_SESSION['identidad']->nombre; ?> <?= $_SESSION['identidad']->apellidos; ?></h3>
     <?php endif; ?>
 
     <ul>
       <?php if (isset($_SESSION['admin'])): ?>
-        <li><a href="">Gestionar categorias</a></li>
+        <li><a href="<?= URL_BASE; ?>Categoria/index">Gestionar categorias</a></li>
         <li><a href="">Gestionar productos</a></li>
         <li><a href="">Gestionar pedidos</a></li>
       <?php endif; ?>

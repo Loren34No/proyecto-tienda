@@ -11,10 +11,12 @@ body {
 
 a {
   color: #01b1ea;
+  text-decoration: none;
 }
 
 a:hover {
   color: #555;
+  text-decoration: underline;
 }
 
 /* CONTAINER */
@@ -94,6 +96,7 @@ nav a:first-child {
 
 nav a:hover {
   background-color: #01b1ea;
+  text-decoration: none;
   color: #fff;
 }
 
@@ -140,8 +143,8 @@ main {
 }
 
 #lateral ul li {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 /* MAIN - CONTENIDO PRINCIPAL */
@@ -215,6 +218,13 @@ button, .btn {
 
 .btn:hover {
   color: #fff !important;
+  text-decoration: none;
+}
+
+.btn-small {
+  width: 200px;
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 label, button {
@@ -260,4 +270,23 @@ footer {
 
 .alerta-error {
   color: #ff0000;
+}
+
+table {
+  width: 100%;
+  border: 1px solid #555;
+  text-align: center;
+}
+
+th {
+  background-color: #ccc;
+  text-align: center;
+}
+
+th, td {
+  padding: 5px;
+}
+
+td {
+  border-top: 1px solid #ccc;
 }
