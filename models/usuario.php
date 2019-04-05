@@ -61,11 +61,11 @@
 
     public function getPassword()
     {
-      return $this->password;
+      return password_hash($this->db->real_escape_string($this->password), PASSWORD_BCRYPT, ['cost' => 4]);
     }
     public function setPassword($password)
     {
-      $this->password = password_hash($this->db->real_escape_string($password), PASSWORD_BCRYPT, ['cost' => 4]);
+      $this->password = $password;
 
       return $this;
     }
@@ -100,11 +100,36 @@
       ";
       $guardar = $this->db->query($sql);
       $resul = false;
-      
+
       if ($guardar) {
         $resul = true;
       }
 
       return $resul;
     }
+
+    public function login()
+    {
+      $resul = false;
+      $email = $this->email;
+      $password = $this->password;
+
+      $sql = "
+        SELECT * FROM usuarios 
+        WHERE email = '$email';
+      ";
+      $login = $this->db->query($sql);
+
+      if ($login && $login->num_rows == 1) {
+        $usuario = $login->fetch_object();
+        $verificar = password_verify($password, $usuario->password);
+
+        if ($verificar) {
+          $resul = $usuario;
+        } 
+      }
+
+      return $resul;
+    }
   }
+?>

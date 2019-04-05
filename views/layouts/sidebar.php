@@ -1,17 +1,29 @@
 <aside id="lateral">
   <div id="login" class="block_aside">
-    <h3>Entrar a la web</h3>
-    <form action="" method="POST">
-      <label for="email">Email:</label>
-      <input type="email" name="email" id="email">
-      <label for="password">Contraseña:</label>
-      <input type="password" name="password" id="password">
-      <button type="submit">Ingresar</button>
-    </form>
+
+    <?php if (!isset($_SESSION['identidad'])): ?>
+      <h3>Entrar a la web</h3>
+      <form action="<?= URL_BASE; ?>Usuario/login" method="POST">
+        <label for="email">Email:</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Contraseña:</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Ingresar</button>
+      </form>
+    <?php else: ?>
+      <h3><?= $_SESSION['identidad']->nombre; ?> <?= $_SESSION['identidad']->apellidos; ?></h3>
+    <?php endif; ?>
+
     <ul>
-      <li><a href="">Mis pedidos</a></li>
-      <li><a href="">Gestionar pedidos</a></li>
-      <li><a href="">Gestionar categorias</a></li>
+      <?php if (isset($_SESSION['admin'])): ?>
+        <li><a href="">Gestionar categorias</a></li>
+        <li><a href="">Gestionar productos</a></li>
+        <li><a href="">Gestionar pedidos</a></li>
+      <?php endif; ?>
+      <?php if (isset($_SESSION['identidad'])): ?>
+        <li><a href="">Mis pedidos</a></li>
+        <li><a href="<?= URL_BASE; ?>Usuario/logout">Cerrar sessión</a></li>
+      <?php endif; ?>
     </ul>
   </div>
 </aside>
