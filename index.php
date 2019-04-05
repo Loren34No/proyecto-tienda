@@ -1,79 +1,43 @@
-<!DOCTYPE html>
-<html lang="es">
+<?php
+  session_start();
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Tienda de Camisetas</title>
-  <link rel="stylesheet" href="assets/css/main.css">
-</head>
+  require_once 'autoload.php';
+  require_once 'config/db.php';
+  require_once 'helpers/utilidades.php';
+  require_once 'config/parametros.php';
+  require_once 'views/layouts/header.php';
+  require_once 'views/layouts/sidebar.php';
 
-<body>
-  <div id="container">
-    <header>
-      <div id="logo">
-        <img src="assets/img/camiseta.png" alt="Logo de camiseta">
-        <a href="index.php">Tienda de camiseta</a>
-      </div>
-    </header>
+  function mostrarError() {
+    $error = new ErrorController();
+    $error->index();
+  }
+  
+  if (isset($_GET['controller'])) {
+    $nombre_controlador = $_GET['controller'] . 'Controller';
+  } elseif (!isset($_GET['controller']) && !isset($_GET['accion'])) {
+    $nombre_controlador = CONTROLLER_DEFAULT;
+  } else {
+    mostrarError();
+    exit();
+  }
 
-    <nav>
-      <ul>
-        <li><a href="">Inicio</a></li>
-        <li><a href="">Categoria 1</a></li>
-        <li><a href="">Categoria 2</a></li>
-        <li><a href="">Categoria 3</a></li>
-        <li><a href="">Categoria 4</a></li>
-      </ul>
-    </nav>
+  if (class_exists($nombre_controlador)) {
+    $controlador = new $nombre_controlador();
+    
+    if (isset($_GET['accion']) && method_exists($controlador, $_GET['accion'])) {
+      $accion = $_GET['accion'];
+      $controlador->$accion();
+    } elseif (!isset($_GET['controller']) && !isset($_GET['accion'])) {
+      $accion_index = ACCION_DEFAULT;
+      $controlador->$accion_index();
+    }
+    else {
+      mostrarError();
+    }
+  } else {
+    mostrarError();
+  }
 
-    <main>
-      <aside id="lateral">
-        <div id="login" class="block_aside">
-          <h3>Entrar a la web</h3>
-          <form action="" method="POST">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email">
-            <label for="password">Contraseña:</label>
-            <input type="password" name="password" id="password">
-            <button type="submit">Ingresar</button>
-          </form>
-          <ul>
-            <li><a href="">Mis pedidos</a></li>
-            <li><a href="">Gestionar pedidos</a></li>
-            <li><a href="">Gestionar categorias</a></li>
-          </ul>
-        </div>
-      </aside>
-
-      <div id="principal">
-        <h1>Productos destacados</h1>
-        <div id="products">
-          <img src="assets/img/camiseta.png">
-          <h2>Camiseta azul ancha</h2>
-          <p>$10.000</p>
-          <a href="" class="btn">Comprar</a>
-        </div>
-        <div id="products">
-          <img src="assets/img/camiseta.png">
-          <h2>Camiseta azul ancha</h2>
-          <p>$10.000</p>
-          <a href="" class="btn">Comprar</a>
-        </div>
-        <div id="products">
-          <img src="assets/img/camiseta.png">
-          <h2>Camiseta azul ancha</h2>
-          <p>$10.000</p>
-          <a href="" class="btn">Comprar</a>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <p>&copy; Desarrollador por sebastiansanchez.cl | <?= date('Y'); ?></p>
-    </footer>
-  </div>
-</body>
-
-</html>
+  require_once 'views/layouts/footer.php';
+?>

@@ -251,3 +251,13 @@ footer {
   background-color: #222;
   border-top: 4px solid #01b1ea;
 }
+
+/* GENERALES */
+
+.alerta-ok {
+  color: #008000;
+}
+
+.alerta-error {
+  color: #ff0000;
+}
