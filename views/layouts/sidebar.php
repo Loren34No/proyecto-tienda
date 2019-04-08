@@ -20,7 +20,7 @@
     <ul>
       <?php if (isset($_SESSION['admin'])): ?>
         <li><a href="<?= URL_BASE; ?>Categoria/index">Gestionar categorias</a></li>
-        <li><a href="">Gestionar productos</a></li>
+        <li><a href="<?= URL_BASE; ?>Producto/gestion">Gestionar productos</a></li>
         <li><a href="">Gestionar pedidos</a></li>
       <?php endif; ?>
       <?php if (isset($_SESSION['identidad'])): ?>

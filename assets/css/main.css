@@ -168,11 +168,17 @@ main {
 }
 
 /* FORMULARIOS */
+form {
+  width: 60%;
+}
+
 label,
 input[type='text'],
+input[type='number'],
 input[type='email'],
 input[type='password'],
-select {
+select,  
+textarea {
   display: block;
   width: 95%;
   margin-top: 2px;
@@ -180,9 +186,11 @@ select {
 }
 
 input[type='text'],
+input[type='number'],
 input[type='email'],
 input[type='password'],
-select {
+select,
+textarea {
   border: 1px solid #c9c9c9;
   box-shadow: 0 0 2px #ccc inset;
   background-color: #fff;
@@ -214,6 +222,7 @@ button, .btn {
 .btn {
   background-color: #33ae3d;
   text-decoration: none;
+  border: 0;
 }
 
 .btn:hover {
@@ -225,6 +234,14 @@ button, .btn {
   width: 200px;
   text-align: center;
   margin-bottom: 20px;
+}
+
+.btn-accion {
+  margin-bottom: 5px;
+}
+
+.btn-accion-eliminar {
+  background: #ff4500;
 }
 
 label, button {
@@ -263,6 +280,9 @@ footer {
 }
 
 /* GENERALES */
+.alerta-ok, .alerta-error {
+  margin-bottom: 15px;
+}
 
 .alerta-ok {
   color: #008000;
