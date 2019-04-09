@@ -43,6 +43,17 @@
       return $categorias;
     }
 
+    public function obtenerUno()
+    {
+      $sql = "
+        SELECT * FROM categorias
+        WHERE id = {$this->id};
+      ";
+      $categoria = $this->db->query($sql);
+
+      return $categoria->fetch_object();
+    }
+
     public function guardarBase()
     {
       $sql = "

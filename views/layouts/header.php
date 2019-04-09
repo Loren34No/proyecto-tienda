@@ -21,9 +21,9 @@
     <?php $categorias = Util::mostrarCategorias(); ?>
     <nav>
       <ul>
-        <li><a href="">Inicio</a></li>
+        <li><a href="<?= URL_BASE; ?>">Inicio</a></li>
         <?php while ($cat = $categorias->fetch_object()): ?>
-          <li><a href=""><?= $cat->nombre; ?></a></li>
+          <li><a href="<?= URL_BASE; ?>Categoria/ver&id=<?= $cat->id; ?>"><?= $cat->nombre; ?></a></li>
         <?php endwhile; ?>
       </ul>
     </nav>

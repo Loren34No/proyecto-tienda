@@ -254,6 +254,7 @@ label, button {
   float: left;
   margin: 0 10px 0 10px;
   text-align: center;
+  margin-bottom: 25px;
 }
 
 #products h2 {
@@ -262,7 +263,7 @@ label, button {
 }
 
 #products img {
-  width: 100px;
+  height: 120px;
 }
 
 #products h2, #products img, #products p {

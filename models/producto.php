@@ -127,6 +127,20 @@
       return $producto;
     }
 
+    public function obtenerTodoCategoria()
+    {
+      $sql = "
+        SELECT p.*, c.nombre AS 'catnombre'
+        FROM productos p
+        INNER JOIN categorias c ON c.id = p.categoria_id
+        WHERE p.categoria_id = {$this->getCategoria_id()}
+        ORDER BY id DESC; 
+      ";
+      $producto = $this->db->query($sql);
+
+      return $producto;
+    }
+
     public function obtenerUno()
     {
       $sql = "
@@ -136,6 +150,18 @@
       $producto = $this->db->query($sql);
 
       return $producto->fetch_object();
+    }
+
+    public function productoRandom($limite)
+    {
+      $sql = "
+        SELECT * FROM productos
+        ORDER BY RAND() 
+        LIMIT $limite;
+      ";
+      $productos = $this->db->query($sql);
+
+      return $productos;
     }
 
     public function guardar()

@@ -5,6 +5,9 @@
   {
     public function index()
     {
+      $producto = new Producto();
+      $productos = $producto->productoRandom(6);
+
       require_once 'views/productos/destacados.php';
     }
 
