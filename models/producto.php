@@ -119,11 +119,23 @@
     public function obtenerTodo()
     {
       $sql = "
-        SELECT * FROM productos ORDER BY id DESC;
+        SELECT * FROM productos 
+        ORDER BY id DESC;
       ";
       $producto = $this->db->query($sql);
 
       return $producto;
+    }
+
+    public function obtenerUno()
+    {
+      $sql = "
+        SELECT * FROM productos
+        WHERE id = {$this->getId()};
+      ";
+      $producto = $this->db->query($sql);
+
+      return $producto->fetch_object();
     }
 
     public function guardar()
@@ -157,6 +169,27 @@
       }
 
       return $resul;
+    }
+
+    public function editar()
+    {
+      $sql = "
+        UPDATE productos 
+        SET categoria_id = {$this->getCategoria_id()}, nombre = '{$this->getNombre()}', descripcion = '{$this->getDescripcion()}', precio = {$this->getPrecio()}, stock = {$this->getStock()}
+      ";
+      if ($this->getImagen() != null) {
+        $sql .= ", imagen = '{$this->getImagen()}'";
+      }
+      $sql .= " WHERE id = {$this->getId()};";
+
+      $editar = $this->db->query($sql);
+      $resul = false;
+
+      if ($editar) {
+        $resul = true;
+      }
+
+      return $resul;        
     }
   }
 ?>

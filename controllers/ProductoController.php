@@ -43,20 +43,29 @@
           $producto->setPrecio($precio);
           $producto->setStock($stock);
           $producto->setCategoria_id($categoria);
-          $archivo = $_FILES['imagen'];
-          $archivo_nombre = $archivo['name'];
-          $tipo_archivo = $archivo['type'];
 
-          if ($tipo_archivo == 'image/jpg' || $tipo_archivo == 'image/jpeg' || $tipo_archivo == 'image/png' || $tipo_archivo == 'image/gif') {
+          if (isset($_FILES['imagen'])) {
+            $archivo = $_FILES['imagen'];
+            $archivo_nombre = $archivo['name'];
+            $tipo_archivo = $archivo['type'];
             
-            if (!is_dir('subidas/imagenes')) {
-              mkdir('subidas/imagenes', 0777, true);
+            if ($tipo_archivo == 'image/jpg' || $tipo_archivo == 'image/jpeg' || $tipo_archivo == 'image/png' || $tipo_archivo == 'image/gif') {
+              
+              if (!is_dir('subidas/imagenes')) {
+                mkdir('subidas/imagenes', 0777, true);
+              }
+              move_uploaded_file($archivo['tmp_name'], 'subidas/imagenes/' . $archivo_nombre);
+              $producto->setImagen($archivo_nombre);
             }
-            move_uploaded_file($archivo['tmp_name'], 'subidas/imagenes/' . $archivo_nombre);
-            $producto->setImagen($archivo_nombre);
           }
 
-          $guardar = $producto->guardar();
+          if (isset($_GET['id'])) {
+            $id = $_GET['id'];
+            $producto->setId($id);
+            $guardar = $producto->editar();
+          } else {
+            $guardar = $producto->guardar();
+          }
 
           if ($guardar) {
             $_SESSION['producto'] = 'completado';
@@ -76,7 +85,19 @@
     public function editar()
     {
       Util::esAdmin();
-      var_dump($_GET);
+      
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $editar = true;
+        $producto = new Producto();
+        $producto->setId($id);
+
+        $pro = $producto->obtenerUno();
+
+        require_once 'views/productos/crear.php';
+      } else {
+        header('Location:' . URL_BASE . 'Producto/gestion');
+      }
     }
 
     public function eliminar()
