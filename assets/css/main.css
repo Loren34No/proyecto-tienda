@@ -270,6 +270,43 @@ label, button {
   margin-bottom: 10px;
 }
 
+#detalle-producto {
+  width: 100%;
+}
+
+#detalle-producto .imagen-producto {
+  display: block;
+  float: left;
+  width: 45%;
+  text-align: center;
+}
+
+#detalle-producto img {
+  display: block;
+  width: 100%;
+}
+
+#detalle-producto .datos-producto {
+  display: block;
+  float: right;
+  width: 50%;
+}
+
+#detalle-producto .btn {
+  width: 200px;
+  text-align: center;
+}
+
+.descripcion {
+  margin-bottom: 20px;
+}
+
+.precio {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #444;
+}
+
 /* FOOTER */
 footer {
   clear: both;

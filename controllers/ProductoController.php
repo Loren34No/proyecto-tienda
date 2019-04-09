@@ -11,6 +11,19 @@
       require_once 'views/productos/destacados.php';
     }
 
+    public function ver()
+    {
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+        $producto = new Producto();
+        $producto->setId($id);
+
+        $pro = $producto->obtenerUno();
+
+        require_once 'views/productos/ver.php';
+      }
+    }
+
     public function gestion()
     {
       Util::esAdmin();
