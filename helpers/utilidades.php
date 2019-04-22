@@ -29,5 +29,23 @@
 
       return $categorias;
     }
+
+    public static function estadisticaCarrito()
+    {
+      $estadistica = array(
+        'cont' => 0,
+        'total' => 0
+      );
+
+      if (isset($_SESSION['carrito'])) {
+        $estadistica['cont'] = count($_SESSION['carrito']);
+
+        foreach ($_SESSION['carrito'] as $value) {
+          $estadistica['total'] += $value['precio'] * $value['unidades'];
+        }
+      }
+
+      return $estadistica;
+    }
   }
 ?>

@@ -1,9 +1,18 @@
 <aside id="lateral">
-  <div id="login" class="block_aside">
+  <div id="carrito" class="block_aside">
+    <h3>Carrito</h3>
+    <ul>
+      <?php $estadis = Util::estadisticaCarrito(); ?>
+      <li>Total productos: <?= $estadis['cont']; ?></li>
+      <li>Total precio: $<?= $estadis['total']; ?></li>
+      <li><a href="<?= URL_BASE; ?>Carrito/index">Ver carrito</a></li>
+    </ul>
+  </div>
 
+  <div id="login" class="block_aside">
     <?php if (!isset($_SESSION['identidad'])): ?>
       <h3>Entrar a la web</h3>
-      <form action="<?= URL_BASE; ?>Usuario/login" method="POST">
+      <form action="<?= URL_BASE; ?>Usuario/login" method="POST" class="entrar">
         <label for="email">Email:</label>
         <input type="email" name="email" id="email">
         <label for="password">Contraseña:</label>

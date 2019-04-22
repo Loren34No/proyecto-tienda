@@ -172,6 +172,10 @@ form {
   width: 60%;
 }
 
+.entrar {
+  width: 95%;
+}
+
 label,
 input[type='text'],
 input[type='number'],
@@ -307,6 +311,11 @@ label, button {
   color: #444;
 }
 
+.img_carrito {
+  height: 80px;
+  margin: 10px auto;
+}
+
 /* FOOTER */
 footer {
   clear: both;
@@ -315,6 +324,15 @@ footer {
   color: #fff;
   background-color: #222;
   border-top: 4px solid #01b1ea;
+}
+
+/* CARRITO */
+.btn-pedido {
+  clear: both;
+  display: block;
+  float: right;
+  text-align: center;
+  width: 150px;
 }
 
 /* GENERALES */
@@ -348,4 +366,10 @@ th, td {
 
 td {
   border-top: 1px solid #ccc;
+}
+
+.total {
+  clear: both;
+  float: right;
+  margin-bottom: 15px;
 }
