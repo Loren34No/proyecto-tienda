@@ -62,5 +62,72 @@
 
       require_once 'views/pedido/confirmado.php';
     }
+
+    public function misPedidos()
+    {
+      Util::login();
+
+      $usuario_id = $_SESSION['identidad']->id;
+      $pedido = new Pedido();
+      $pedido->setUsuario_id($usuario_id);
+      $pedidos = $pedido->obtenerTodoPorUsuario();
+
+      require_once 'views/pedido/mis_pedidos.php';
+    }
+
+    public function detalle() 
+    {
+      util::login();
+
+      if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+
+        $pedido = new Pedido();
+        $pedido->setId($id);
+        $pedido = $pedido->obtenerUno();
+
+        $pedido_productos = new Pedido();
+        $productos = $pedido_productos->productosPorPedido($id);
+
+        require_once 'views/pedido/detalle.php';
+
+      } else {
+
+        header('Location:' . URL_BASE . 'Pedido/misPedidos');
+      }
+    }
+
+    public function gestion()
+    {
+      Util::esAdmin();
+
+      $gestion = true;
+      $pedido = new Pedido();
+      $pedidos = $pedido->obtenerTodo();
+
+      require_once 'views/pedido/mis_pedidos.php';
+    }
+
+    public function estado()
+    {
+      Util::esAdmin();
+
+      if (isset($_POST['pedido_id']) && isset($_POST['estado'])) {
+        $id = $_POST['pedido_id'];
+        $estado = $_POST['estado'];
+
+        $pedido = new Pedido();
+        $pedido->setId($id);
+        $pedido->setEstado($estado);
+        $pedido->actualizarUnPedido();
+
+        header('Location:' . URL_BASE . 'Pedido/detalle&id=' . $id);
+
+      } else {
+
+        header('Location:' . URL_BASE);
+      }
+      
+    }
   }
 ?>

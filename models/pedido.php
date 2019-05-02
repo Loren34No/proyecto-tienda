@@ -141,7 +141,7 @@
     public function obtenerUnoPorUsuario()
     {
       $sql = "
-        SELECT p.id, p.coste FROM pedidos p
+        SELECT id, coste FROM pedidos
         WHERE usuario_id = {$this->getUsuario_id()}
         ORDER BY id DESC LIMIT 1;
       ";
@@ -149,6 +149,19 @@
       $pedido = $this->db->query($sql);
 
       return $pedido->fetch_object();
+    }
+
+    public function obtenerTodoPorUsuario()
+    {
+      $sql = "
+        SELECT * FROM pedidos
+        WHERE usuario_id = {$this->getUsuario_id()}
+        ORDER BY id DESC;
+      ";
+
+      $pedido = $this->db->query($sql);
+
+      return $pedido;
     }
 
     public function productosPorPedido($id)
@@ -212,6 +225,24 @@
       }
 
       return $resul;
+    }
+
+    public function actualizarUnPedido()
+    {
+      $sql = "
+        UPDATE pedidos 
+        SET estado = '{$this->getEstado()}'
+        WHERE id = {$this->getId()};
+      ";
+
+      $guardar = $this->db->query($sql);
+      $resul = false;
+
+      if ($guardar) {
+        $resul = true;
+      }
+
+      return $resul; 
     }
   }
 ?>
