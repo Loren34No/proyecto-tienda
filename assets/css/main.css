@@ -373,3 +373,7 @@ td {
   float: right;
   margin-bottom: 15px;
 }
+
+ul {
+  list-style-type: none;
+}

@@ -37,4 +37,4 @@
 <br/>
 <?php $estadi = Util::estadisticaCarrito(); ?>
 <h3 class="total">Precio total: $<?= $estadi['total']; ?></h3>
-<a href="" class="btn btn-pedido">Confirmar pedido</a>
+<a href="<?= URL_BASE; ?>Pedido/hacer" class="btn btn-pedido">Confirmar pedido</a>
