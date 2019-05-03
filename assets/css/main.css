@@ -335,6 +335,19 @@ footer {
   width: 150px;
 }
 
+.unidades {
+  width: 75px;
+  margin: auto;
+}
+
+.unidades .btn {
+  display: block;
+  width: 30px;
+  text-align: center;
+  float: left;
+  margin: 3px;
+}
+
 /* GENERALES */
 .alerta-ok {
   color: #008000;
