@@ -11,9 +11,3 @@ El sitio permite realizar registro y login de usuarios y una vez registrado hace
 - Mostrar productos
 - Carrito de compra
 - Pedidos de la tienda
-
-El codigo queda disponible para quien le sea util. 
-
-[sebastiansanchez.cl](https://sebastiansanchez.cl/)
-
-:)
